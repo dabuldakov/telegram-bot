@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import org.tb.infrastructure.handler.MessageHandler
 import org.telegram.telegrambots.bots.TelegramLongPollingBot
+import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Update
+import org.telegram.telegrambots.meta.api.objects.commands.BotCommand
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException
 
 @Service
@@ -17,6 +19,11 @@ class Service(
 ) : TelegramLongPollingBot(botToken){
 
     val logger: Logger = LoggerFactory.getLogger(Service::class.java)
+
+
+    init {
+        setCommands()
+    }
 
     override fun getBotUsername(): String {
         return "ochen_hueviy_bot"
@@ -29,6 +36,16 @@ class Service(
                 message = messageHandler.answer(update.message.text)
             )
         }
+    }
+
+    private fun setCommands() {
+        val commands = listOf(
+            BotCommand("/start", "Say hello"),
+            BotCommand("/help", "Get help"),
+            BotCommand("/echo", "Echo"),
+            BotCommand("/emperor", "Gain strength in moments of weakness")
+        )
+        execute(SetMyCommands(commands, null, null))
     }
 
     private fun sendMsg(chatId: Long, message: String) {
