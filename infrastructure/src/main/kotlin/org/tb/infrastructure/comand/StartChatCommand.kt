@@ -5,10 +5,8 @@ import org.springframework.stereotype.Component
 @Component
 class StartChatCommand : ChatCommand {
     override fun msg(): String {
-        return "Hello zaebal!"
+        return "Здарово заебал!"
     }
 
-    override fun name(): String {
-        return "/start"
-    }
+    override fun name() = "/start"
 }

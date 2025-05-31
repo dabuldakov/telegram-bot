@@ -31,7 +31,7 @@ class Service(
         }
     }
 
-    protected fun sendMsg(chatId: Long, message: String) {
+    private fun sendMsg(chatId: Long, message: String) {
         val sendMessage = SendMessage(chatId.toString(), message)
         try {
             execute(sendMessage)

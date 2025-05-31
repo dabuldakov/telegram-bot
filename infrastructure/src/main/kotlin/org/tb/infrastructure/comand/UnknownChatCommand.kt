@@ -4,11 +4,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class UnknownChatCommand : ChatCommand {
-    override fun msg(): String {
-        return "Koster vidish?"
-    }
+    override fun msg() = "Костер видишь?"
 
-    override fun name(): String {
-        return ""
-    }
+    override fun name() = ""
 }

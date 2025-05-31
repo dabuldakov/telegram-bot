@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component
 @Component
 class HelpChatCommand : ChatCommand {
     override fun msg(): String {
-        return "Huly noesh!"
+        return "Хули ноешь!"
     }
 
     override fun name(): String {
