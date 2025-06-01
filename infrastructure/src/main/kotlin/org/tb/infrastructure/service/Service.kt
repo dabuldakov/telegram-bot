@@ -15,18 +15,18 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException
 @Service
 class Service(
     private val messageHandler: MessageHandler,
-    @Value("\${bot.token}") botToken: String?
+    @Value("\${bot.token}") private val botToken: String?,
+    @Value("\${bot.name}")private val botName: String?
 ) : TelegramLongPollingBot(botToken){
 
     val logger: Logger = LoggerFactory.getLogger(Service::class.java)
-
 
     init {
         setCommands()
     }
 
     override fun getBotUsername(): String {
-        return "ochen_hueviy_bot"
+        return botName?: throw IllegalArgumentException("Can not get bot name from resources")
     }
 
     override fun onUpdateReceived(update: Update) {
