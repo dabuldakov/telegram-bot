@@ -43,7 +43,8 @@ class Service(
             BotCommand("/start", "Say hello"),
             BotCommand("/help", "Get help"),
             BotCommand("/echo", "Echo"),
-            BotCommand("/emperor", "Gain strength in moments of weakness")
+            BotCommand("/emperor", "Gain strength in moments of weakness"),
+            BotCommand("/ip", "Get your IP")
         )
         execute(SetMyCommands(commands, null, null))
     }
